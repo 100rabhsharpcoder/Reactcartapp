@@ -10,21 +10,66 @@ class CartItem extends React.Component{
             img:''
         }
         // this.increaseQuantity = this.increaseQuantity.bind(this);
+        // this.testing();
     }
 
+    // testing(){
+    //     const promise =  new Promise((resolve, reject )=>{
+    //         setTimeout(()=>{
+    //             resolve('done');
+    //         },5000);
+    //     })
+    //     promise.then(()=>{
+    //         this.setState({qty:this.state.qty+10});
+    //         this.setState({qty:this.state.qty+10});
+
+    //         this.setState({qty:this.state.qty+10});
+
+    //         // set state acts like asycnhronou call
+    //         console.log("state", this.state);
+    //     })
+    // }
+
+
+    // function for increase quantity 
     increaseQuantity = () =>{
         // this.state.qty+=1;
         // set sate form one
-        this.setState({
-            qty:this.state.qty+1
-        });
+        // this.setState({
+        //     qty:this.state.qty+1
+        // });
 
         // set state form 2 - if previousstate requred use this form 
-        // this.setState((prevState)=>{
-        //          return{
-        //            qty: prevState.qty+1
-        //          }
+        this.setState((prevState)=>{
+                 return{
+                   qty: prevState.qty+1
+                 }
+        }, ()=>{ 
+            console.log('this.state', this.state);
+        });
+        
+        
+    }
+   
+
+    // function for decrase the quantity
+    decreaseQuantity = () =>{
+        const {qty} =  this.state;
+        if(qty === 0){
+            return;
+        }
+        // this.state.qty+=1;
+        // set sate form one
+        // this.setState({
+        //     qty:this.state.qty-1
         // });
+
+        // set state form 2 - if previousstate requred use this form 
+        this.setState((prevState)=>{
+                 return{
+                   qty: prevState.qty-1
+                 }
+        });
         console.log('this.state', this.state);
     }
     render(){
@@ -49,7 +94,8 @@ class CartItem extends React.Component{
 
             <img alt="decrease" 
             className="action-icons"
-             src="https://www.svgrepo.com/show/522961/minus-circle.svg " />
+             src="https://www.svgrepo.com/show/522961/minus-circle.svg "
+             onClick={this.decreaseQuantity} />
 
             <img alt="delete"
              className="action-icons" 
