@@ -1,17 +1,7 @@
 import React from 'react';
 
 class CartItem extends React.Component{
-    constructor(){
-        super();
-        this.state={
-            price:999,
-            title:" Mobile PHONE",
-            qty:1,
-            img:''
-        }
-        // this.increaseQuantity = this.increaseQuantity.bind(this);
-        // this.testing();
-    }
+ 
 
     // testing(){
     //     const promise =  new Promise((resolve, reject )=>{
@@ -21,10 +11,7 @@ class CartItem extends React.Component{
     //     })
     //     promise.then(()=>{
     //         this.setState({qty:this.state.qty+10});
-    //         this.setState({qty:this.state.qty+10});
-
-    //         this.setState({qty:this.state.qty+10});
-
+            
     //         // set state acts like asycnhronou call
     //         console.log("state", this.state);
     //     })
@@ -70,12 +57,14 @@ class CartItem extends React.Component{
                    qty: prevState.qty-1
                  }
         });
-        console.log('this.state', this.state);
+        // console.log('this.state', this.state);
     }
     render(){
-        const { price , title , qty} = this.state;
+        // console.log("this.prop", this.props)
+        const { price , title , qty} = this.props.product;
         return (
              <div className='card-item' style={{display: 'inline-flex'}}>
+                {this.props.jsx}
                 <div className='left-block'>
                      <img style={styles.image}/>
                 </div>
